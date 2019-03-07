@@ -53,7 +53,7 @@ def search_json(json):
     result = 0
     if isinstance(json, int):
         result += json
-    elif isinstance(json, list):
+    elif isinstance(json, list) or isinstance(json, set) or isinstance(json, tuple):
         result += search_list(json)
     elif isinstance(json, dict):
         result += search_dict(json)
