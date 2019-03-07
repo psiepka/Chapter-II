@@ -22,7 +22,7 @@ def search_dict(x_data):
             result += v_x
         elif isinstance(v_x, dict):
             result += search_dict(v_x)
-        elif isinstance(v_x, list):
+        elif isinstance(v_x, (tuple,list,set)):
             result += search_list(v_x)
     return result
 
@@ -37,7 +37,7 @@ def search_list(xyz):
     for x_item in xyz:
         if isinstance(x_item, int):
             res += x_item
-        elif isinstance(x_item, list):
+        elif isinstance(x_item, (tuple,list,set)):
             res += search_list(x_item)
         elif isinstance(x_item, dict):
             res += search_dict(x_item)
@@ -53,7 +53,7 @@ def search_json(json):
     result = 0
     if isinstance(json, int):
         result += json
-    elif isinstance(json, list) or isinstance(json, set) or isinstance(json, tuple):
+    elif isinstance(json, (tuple,list,set)):
         result += search_list(json)
     elif isinstance(json, dict):
         result += search_dict(json)
